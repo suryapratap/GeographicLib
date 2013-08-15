@@ -9,3 +9,8 @@ The plan to first change the comments to a C# style whenever I need to change an
 All in all, the code compiles without error and in general works ;)
 
 For the original code head on to http://geographiclib.sourceforge.net/
+
+Examples
+--------
+
+The given example uses GeoAPI, although it was not necessary, this was done to showcase how simple it is to integrate in a common use case.
