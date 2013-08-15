@@ -16,15 +16,15 @@ namespace GeographicLib
         /**
          * The number of vertices in the polygon
          **********************************************************************/
-        public int num;
+        public int Num;
         /**
          * The perimeter of the polygon or the length of the polyline (meters).
          **********************************************************************/
-        public double perimeter;
+        public double Perimeter;
         /**
          * The area of the polygon (meters<sup>2</sup>).
          **********************************************************************/
-        public double area;
+        public double Area;
         /**
          * Constructor
          * <p>
@@ -35,9 +35,9 @@ namespace GeographicLib
          **********************************************************************/
         public PolygonResult(int num, double perimeter, double area)
         {
-            this.num = num;
-            this.perimeter = perimeter;
-            this.area = area;
+            this.Num = num;
+            this.Perimeter = perimeter;
+            this.Area = area;
         }
     }
 }

@@ -122,7 +122,7 @@ public class GeoMath {
    * <p>
    * See D. E. Knuth, TAOCP, Vol 2, 4.2.2, Theorem B.
    **********************************************************************/
-  public static Pair sum(double u, double v) {
+  public static Pair Sum(double u, double v) {
     double s = u + v;
     double up = s - v;
     double vpp = s - up;
@@ -172,7 +172,7 @@ public class GeoMath {
    **********************************************************************/
   public static double AngDiff(double x, double y) {
     double d, t;
-    { Pair r = sum(-x, y); d = r.first; t = r.second; }
+    { Pair r = Sum(-x, y); d = r.first; t = r.second; }
     if ((d - 180.0) + t > 0.0) // y - x > 180
       d -= 360.0;            // exact
     else if ((d + 180.0) + t <= 0.0) // y - x <= -180

@@ -32,7 +32,7 @@ namespace GeographicLib.Util
             }
             catch (Exception e) { }
             PolygonResult r = p.Compute();
-            Console.WriteLine(r.num + " " + r.perimeter + " " + r.area);
+            Console.WriteLine(r.Num + " " + r.Perimeter + " " + r.Area);
         }
     }
 }
