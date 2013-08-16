@@ -12,7 +12,7 @@ namespace GeographicLib
     /**
      * Polygon areas.
      * <p>
-     * This computes the area of a geodesic polygon using the method given
+     * This computes the Area of a geodesic polygon using the method given
      * Section 6 of
      * <ul>
      * <li>
@@ -26,21 +26,21 @@ namespace GeographicLib
      *   geod-addenda.html</a>.
      * </ul>
      * <p>
-     * This class lets you add vertices one at a time to the polygon.  The area
-     * and perimeter are accumulated in two times the standard floating point
+     * This class lets you add vertices one at a time to the polygon.  The Area
+     * and Perimeter are accumulated in two times the standard floating point
      * precision to guard against the loss of accuracy with many-sided polygons.
-     * At any point you can ask for the perimeter and area so far.  There's an
+     * At any point you can ask for the Perimeter and Area so far.  There's an
      * option to treat the points as defining a polyline instead of a polygon; in
-     * that case, only the perimeter is computed.
+     * that case, only the Perimeter is computed.
      * <p>
      * Example of use:
      * <pre>
      * {@code
-     * // Compute the area of a geodesic polygon.
+     * // Compute the Area of a geodesic polygon.
      *
      * // This program reads lines with lat, lon for each vertex of a polygon.
      * // At the end of input, the program prints the number of vertices,
-     * // the perimeter of the polygon and its area (for the WGS84 ellipsoid).
+     * // the Perimeter of the polygon and its Area (for the WGS84 ellipsoid).
      *
      * import java.util.*;
      * import net.sf.geographiclib.*;
@@ -57,7 +57,7 @@ namespace GeographicLib
      *     }
      *     catch (Exception e) {}
      *     PolygonResult r = p.Compute();
-     *     System.out.println(r.num + " " + r.perimeter + " " + r.area);
+     *     System.out.println(r.Num + " " + r.Perimeter + " " + r.Area);
      *   }
      * }}</pre>
      **********************************************************************/
@@ -65,8 +65,8 @@ namespace GeographicLib
     {
 
         private Geodesic _earth;
-        private double _area0;        // Full ellipsoid area
-        private bool _polyline;    // Assume polyline (don't close and skip area)
+        private double _area0;        // Full ellipsoid Area
+        private bool _polyline;    // Assume polyline (don't close and skip Area)
         private int _mask;
         private int _num;
         private int _crossings;
@@ -179,27 +179,27 @@ namespace GeographicLib
         /**
          * Return the results so far.
          * <p>
-         * @return PolygonResult(<i>num</i>, <i>perimeter</i>, <i>area</i>) where
-         *   <i>num</i> is the number of vertices, <i>perimeter</i> is the perimeter
-         *   of the polygon or the length of the polyline (meters), and <i>area</i>
-         *   is the area of the polygon (meters<sup>2</sup>) or Double.NaN of
+         * @return PolygonResult(<i>Num</i>, <i>Perimeter</i>, <i>Area</i>) where
+         *   <i>Num</i> is the number of vertices, <i>Perimeter</i> is the Perimeter
+         *   of the polygon or the length of the polyline (meters), and <i>Area</i>
+         *   is the Area of the polygon (meters<sup>2</sup>) or Double.NaN of
          *   <i>polyline</i> is true in the constructor.
          * <p>
-         * Counter-clockwise traversal counts as a positive area.
+         * Counter-clockwise traversal counts as a positive Area.
          **********************************************************************/
         public PolygonResult Compute() { return Compute(false, true); }
         /**
          * Return the results so far.
          * <p>
          * @param reverse if true then clockwise (instead of counter-clockwise)
-         *   traversal counts as a positive area.
-         * @param sign if true then return a signed result for the area if
+         *   traversal counts as a positive Area.
+         * @param sign if true then return a signed result for the Area if
          *   the polygon is traversed in the "wrong" direction instead of returning
-         *   the area for the rest of the earth.
-         * @return PolygonResult(<i>num</i>, <i>perimeter</i>, <i>area</i>) where
-         *   <i>num</i> is the number of vertices, <i>perimeter</i> is the perimeter
-         *   of the polygon or the length of the polyline (meters), and <i>area</i>
-         *   is the area of the polygon (meters<sup>2</sup>) or Double.NaN of
+         *   the Area for the rest of the earth.
+         * @return PolygonResult(<i>Num</i>, <i>Perimeter</i>, <i>Area</i>) where
+         *   <i>Num</i> is the number of vertices, <i>Perimeter</i> is the Perimeter
+         *   of the polygon or the length of the polyline (meters), and <i>Area</i>
+         *   is the Area of the polygon (meters<sup>2</sup>) or Double.NaN of
          *   <i>polyline</i> is true in the constructor.
          **********************************************************************/
         public PolygonResult Compute(bool reverse, bool sign)
@@ -215,11 +215,11 @@ namespace GeographicLib
             int crossings = _crossings + transit(_lon1, _lon0);
             if ((crossings & 1) != 0)
                 tempsum.Add((tempsum.Sum() < 0 ? 1 : -1) * _area0 / 2);
-            // area is with the clockwise sense.  If !reverse convert to
+            // Area is with the clockwise sense.  If !reverse convert to
             // counter-clockwise convention.
             if (!reverse)
                 tempsum.Negate();
-            // If sign put area in (-area0/2, area0/2], else put area in [0, area0)
+            // If sign put Area in (-area0/2, area0/2], else put Area in [0, area0)
             if (sign)
             {
                 if (tempsum.Sum() > _area0 / 2)
@@ -240,22 +240,22 @@ namespace GeographicLib
         /**
          * Return the results assuming a tentative final test point is added;
          * however, the data for the test point is not saved.  This lets you report
-         * a running result for the perimeter and area as the user moves the mouse
+         * a running result for the Perimeter and Area as the user moves the mouse
          * cursor.  Ordinary floating point arithmetic is used to accumulate the
-         * data for the test point; thus the area and perimeter returned are less
+         * data for the test point; thus the Area and Perimeter returned are less
          * accurate than if AddPoint and Compute are used.
          * <p>
          * @param lat the latitude of the test point (degrees).
          * @param lon the longitude of the test point (degrees).
          * @param reverse if true then clockwise (instead of counter-clockwise)
-         *   traversal counts as a positive area.
-         * @param sign if true then return a signed result for the area if
+         *   traversal counts as a positive Area.
+         * @param sign if true then return a signed result for the Area if
          *   the polygon is traversed in the "wrong" direction instead of returning
-         *   the area for the rest of the earth.
-         * @return PolygonResult(<i>num</i>, <i>perimeter</i>, <i>area</i>) where
-         *   <i>num</i> is the number of vertices, <i>perimeter</i> is the perimeter
-         *   of the polygon or the length of the polyline (meters), and <i>area</i>
-         *   is the area of the polygon (meters<sup>2</sup>) or Double.NaN of
+         *   the Area for the rest of the earth.
+         * @return PolygonResult(<i>Num</i>, <i>Perimeter</i>, <i>Area</i>) where
+         *   <i>Num</i> is the number of vertices, <i>Perimeter</i> is the Perimeter
+         *   of the polygon or the length of the polyline (meters), and <i>Area</i>
+         *   is the Area of the polygon (meters<sup>2</sup>) or Double.NaN of
          *   <i>polyline</i> is true in the constructor.
          * <p>
          * <i>lat</i> should be in the range [&minus;90&deg;, 90&deg;] and <i>lon</i>
@@ -291,11 +291,11 @@ namespace GeographicLib
 
             if ((crossings & 1) != 0)
                 tempsum += (tempsum < 0 ? 1 : -1) * _area0 / 2;
-            // area is with the clockwise sense.  If !reverse convert to
+            // Area is with the clockwise sense.  If !reverse convert to
             // counter-clockwise convention.
             if (!reverse)
                 tempsum *= -1;
-            // If sign put area in (-area0/2, area0/2], else put area in [0, area0)
+            // If sign put Area in (-area0/2, area0/2], else put Area in [0, area0)
             if (sign)
             {
                 if (tempsum > _area0 / 2)
@@ -316,22 +316,22 @@ namespace GeographicLib
         /**
          * Return the results assuming a tentative final test point is added via an
          * azimuth and distance; however, the data for the test point is not saved.
-         * This lets you report a running result for the perimeter and area as the
+         * This lets you report a running result for the Perimeter and Area as the
          * user moves the mouse cursor.  Ordinary floating point arithmetic is used
-         * to accumulate the data for the test point; thus the area and perimeter
+         * to accumulate the data for the test point; thus the Area and Perimeter
          * returned are less accurate than if AddPoint and Compute are used.
          * <p>
          * @param azi azimuth at current point (degrees).
          * @param s distance from current point to final test point (meters).
          * @param reverse if true then clockwise (instead of counter-clockwise)
-         *   traversal counts as a positive area.
-         * @param sign if true then return a signed result for the area if
+         *   traversal counts as a positive Area.
+         * @param sign if true then return a signed result for the Area if
          *   the polygon is traversed in the "wrong" direction instead of returning
-         *   the area for the rest of the earth.
-         * @return PolygonResult(<i>num</i>, <i>perimeter</i>, <i>area</i>) where
-         *   <i>num</i> is the number of vertices, <i>perimeter</i> is the perimeter
-         *   of the polygon or the length of the polyline (meters), and <i>area</i>
-         *   is the area of the polygon (meters<sup>2</sup>) or Double.NaN of
+         *   the Area for the rest of the earth.
+         * @return PolygonResult(<i>Num</i>, <i>Perimeter</i>, <i>Area</i>) where
+         *   <i>Num</i> is the number of vertices, <i>Perimeter</i> is the Perimeter
+         *   of the polygon or the length of the polyline (meters), and <i>Area</i>
+         *   is the Area of the polygon (meters<sup>2</sup>) or Double.NaN of
          *   <i>polyline</i> is true in the constructor.
          * <p>
          * <i>azi</i> should be in the range [&minus;540&deg;, 540&deg;).
@@ -363,11 +363,11 @@ namespace GeographicLib
 
             if ((crossings & 1) != 0)
                 tempsum += (tempsum < 0 ? 1 : -1) * _area0 / 2;
-            // area is with the clockwise sense.  If !reverse convert to
+            // Area is with the clockwise sense.  If !reverse convert to
             // counter-clockwise convention.
             if (!reverse)
                 tempsum *= -1;
-            // If sign put area in (-area0/2, area0/2], else put area in [0, area0)
+            // If sign put Area in (-area0/2, area0/2], else put Area in [0, area0)
             if (sign)
             {
                 if (tempsum > _area0 / 2)

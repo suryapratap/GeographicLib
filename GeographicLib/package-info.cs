@@ -43,7 +43,7 @@ namespace GeographicLib
  *    utility for solving the inverse geodesic problem;
  * <li>
  *    {@code planimter/src/main/java/Planimeter.java} is a simple command line
- *    utility for computing the area of a geodesic polygon given its vertices.
+ *    utility for computing the Area of a geodesic polygon given its vertices.
  * </ul>
  * <p>
  * Here, for example, is {@code Inverse.java}
@@ -86,7 +86,7 @@ namespace GeographicLib
  * Use <a href="http://maven.apache.org/">maven</a> to create a jar file by
  * running (in the main java directory) <pre>
  * mvn package </pre>
- * (Your first run of maven may take a long time, because it needs to download
+ * (Your First run of maven may take a long time, because it needs to download
  * some additional packages to your local repository.)  Then compile and run
  * Inverse.java with <pre>
  * cd inverse/src/main/java
@@ -97,7 +97,7 @@ namespace GeographicLib
  * Use <a href="http://maven.apache.org/">maven</a> to install GeographicLib by
  * running (in the main java directory) <pre>
  * mvn install </pre>
- * (Your first run of maven may take a long time, because it needs to download
+ * (Your First run of maven may take a long time, because it needs to download
  * some additional packages to your local repository.)  Then compile and run
  * Inverse.java using {@code inverse/pom.xml} with <pre>
  * cd inverse
@@ -137,7 +137,7 @@ namespace GeographicLib
  *   ellipsoid;
  * <li>
  *   {@link net.sf.geographiclib.PolygonArea}, a class to compute the
- *   perimeter and area of a geodesic polygon (returned as a {@link
+ *   Perimeter and Area of a geodesic polygon (returned as a {@link
  *   net.sf.geographiclib.PolygonResult}).
  * </ul>
  * <p>

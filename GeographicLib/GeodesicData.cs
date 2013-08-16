@@ -68,7 +68,7 @@ namespace GeographicLib
          **********************************************************************/
         public double M21;
         /**
-         * area under the geodesic (meters<sup>2</sup>).
+         * Area under the geodesic (meters<sup>2</sup>).
          **********************************************************************/
         public double S12;
         /**

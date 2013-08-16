@@ -74,8 +74,8 @@ namespace GeographicLib
             // Here's Shewchuk's solution...
             double u;                       // hold exact sum as [s, t, u]
             // Accumulate starting at least significant end
-            { Pair r = GeoMath.Sum(y, _t); y = r.first; u = r.second; }
-            { Pair r = GeoMath.Sum(y, _s); _s = r.first; _t = r.second; }
+            { Pair r = GeoMath.sum(y, _t); y = r.First; u = r.Second; }
+            { Pair r = GeoMath.sum(y, _s); _s = r.First; _t = r.Second; }
             // Start is _s, _t decreasing and non-adjacent.  Sum is now (s + t + u)
             // exactly with s, t, u non-adjacent and in decreasing order (except for
             // possible zeros).  The following code tries to normalize the result.

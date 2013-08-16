@@ -69,7 +69,7 @@ namespace GeographicLib
          **********************************************************************/
         public static readonly int GEODESICSCALE = 1 << 13 | CAP_C1 | CAP_C2;
         /**
-         * Calculate area <i>S12</i>.
+         * Calculate Area <i>S12</i>.
          **********************************************************************/
         public static readonly int AREA = 1 << 14 | CAP_C4;
         /**

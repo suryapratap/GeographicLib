@@ -59,11 +59,11 @@ namespace GeographicLib
      *       s12 = g.s12,
      *       a12 = g.a12,
      *       ds0 = 500e3;        // Nominal distance between points = 500 km
-     *     int num = (int)(Math.ceil(s12 / ds0)); // The number of intervals
+     *     int Num = (int)(Math.ceil(s12 / ds0)); // The number of intervals
      *     {
      *       // Use intervals of equal length
-     *       double ds = s12 / num;
-     *       for (int i = 0; i <= num; ++i) {
+     *       double ds = s12 / Num;
+     *       for (int i = 0; i <= Num; ++i) {
      *         g = line.Position(i * ds,
      *                  GeodesicMask.LATITUDE | GeodesicMask.LONGITUDE);
      *         System.out.println(i + " " + g.lat2 + " " + g.lon2);
@@ -71,8 +71,8 @@ namespace GeographicLib
      *     }
      *     {
      *       // Slightly faster, use intervals of equal arc length
-     *       double da = a12 / num;
-     *       for (int i = 0; i <= num; ++i) {
+     *       double da = a12 / Num;
+     *       for (int i = 0; i <= Num; ++i) {
      *         g = line.ArcPosition(i * da,
      *                  GeodesicMask.LATITUDE | GeodesicMask.LONGITUDE);
      *         System.out.println(i + " " + g.lat2 + " " + g.lon2);
@@ -154,7 +154,7 @@ namespace GeographicLib
          *   <i>caps</i> |= GeodesicMask.GEODESICSCALE for the geodesic scales
          *   <i>M12</i> and <i>M21</i>;
          * <li>
-         *   <i>caps</i> |= GeodesicMask.AREA for the area <i>S12</i>;
+         *   <i>caps</i> |= GeodesicMask.AREA for the Area <i>S12</i>;
          * <li>
          *   <i>caps</i> |= GeodesicMask.DISTANCE_IN permits the length of the
          *   geodesic to be given in terms of <i>s12</i>; without this capability the
@@ -194,7 +194,7 @@ namespace GeographicLib
             cbet1 = Math.Abs(lat1) == 90 ? Geodesic.tiny_ : Math.Cos(phi);
             {
                 Pair p = Geodesic.SinCosNorm(sbet1, cbet1);
-                sbet1 = p.first; cbet1 = p.second;
+                sbet1 = p.First; cbet1 = p.Second;
             }
             _dn1 = Math.Sqrt(1 + g._ep2 * GeoMath.Sq(sbet1));
 
@@ -216,7 +216,7 @@ namespace GeographicLib
             _csig1 = _comg1 = sbet1 != 0 || _calp1 != 0 ? cbet1 * _calp1 : 1;
             {
                 Pair p = Geodesic.SinCosNorm(_ssig1, _csig1);
-                _ssig1 = p.first; _csig1 = p.second;
+                _ssig1 = p.First; _csig1 = p.Second;
             } // sig1 in (-pi, pi]
             // Geodesic.SinCosNorm(_somg1, _comg1); -- don't need to normalize!
 
@@ -371,7 +371,7 @@ namespace GeographicLib
          * and {@link #ArcPosition(double, int) ArcPosition} are defined in terms of
          * this function.
          * <p>
-         * @param arcmode bool flag determining the meaning of the second
+         * @param arcmode bool flag determining the meaning of the Second
          *   parameter; if arcmode is false, then the GeodesicLine object must have
          *   been constructed with <i>caps</i> |= {@link GeodesicMask#DISTANCE_IN}.
          * @param s12_a12 if <i>arcmode</i> is false, this is the distance between
@@ -398,7 +398,7 @@ namespace GeographicLib
          *   <i>outmask</i> |= GeodesicMask.GEODESICSCALE for the geodesic scales
          *   <i>M12</i> and <i>M21</i>.
          * <li>
-         *   <i>outmask</i> |= GeodesicMask.AREA for the area <i>S12</i>.
+         *   <i>outmask</i> |= GeodesicMask.AREA for the Area <i>S12</i>.
          * </ul>
          * <p>
          * Requesting a value which the GeodesicLine object is not capable of

@@ -36,7 +36,7 @@ namespace GeographicLib
      * solution is provided.
      * <p>
      * The standard way of specifying the direct problem is the specify the
-     * distance <i>s12</i> to the second point.  However it is sometimes useful
+     * distance <i>s12</i> to the Second point.  However it is sometimes useful
      * instead to specify the arc length <i>a12</i> (in degrees) on the auxiliary
      * sphere.  This is a mathematical construct used in solving the geodesic
      * problems.  The solution of the direct problem in this form is provided by
@@ -49,8 +49,8 @@ namespace GeographicLib
      * geodesics.  These are:
      * <ul>
      * <li>
-     *   <i>reduced length</i>.  If we fix the first point and increase
-     *   <i>azi1</i> by <i>dazi1</i> (radians), the second point is displaced
+     *   <i>reduced length</i>.  If we fix the First point and increase
+     *   <i>azi1</i> by <i>dazi1</i> (radians), the Second point is displaced
      *   <i>m12</i> <i>dazi1</i> in the direction <i>azi2</i> + 90&deg;.  The
      *   quantity <i>m12</i> is called the "reduced length" and is symmetric under
      *   interchange of the two points.  On a curved surface the reduced length
@@ -58,7 +58,7 @@ namespace GeographicLib
      *   surface, we have <i>m12</i> = <i>s12</i>.  The ratio <i>s12</i>/<i>m12</i>
      *   gives the azimuthal scale for an azimuthal equidistant projection.
      * <li>
-     *   <i>geodesic scale</i>.  Consider a reference geodesic and a second
+     *   <i>geodesic scale</i>.  Consider a reference geodesic and a Second
      *   geodesic parallel to this one at point 1 and separated by a small distance
      *   <i>dt</i>.  The separation of the two geodesics at point 2 is <i>M12</i>
      *   <i>dt</i> where <i>M12</i> is called the "geodesic scale".  <i>M21</i> is
@@ -66,11 +66,11 @@ namespace GeographicLib
      *   flat surface, we have <i>M12</i> = <i>M21</i> = 1.  The quantity
      *   1/<i>M12</i> gives the scale of the Cassini-Soldner projection.
      * <li>
-     *   <i>area</i>.  The area between the geodesic from point 1 to point 2 and
-     *   the equation is represented by <i>S12</i>; it is the area, measured
+     *   <i>Area</i>.  The Area between the geodesic from point 1 to point 2 and
+     *   the equation is represented by <i>S12</i>; it is the Area, measured
      *   counter-clockwise, of the geodesic quadrilateral with corners
      *   (<i>lat1</i>,<i>lon1</i>), (0,<i>lon1</i>), (0,<i>lon2</i>), and
-     *   (<i>lat2</i>,<i>lon2</i>).  It can be used to compute the area of any
+     *   (<i>lat2</i>,<i>lon2</i>).  It can be used to compute the Area of any
      *   simple geodesic polygon.
      * </ul>
      * <p>
@@ -125,14 +125,14 @@ namespace GeographicLib
      * <li>
      *   <i>lat1</i> = &minus;<i>lat2</i> (with neither at a pole).  If <i>azi1</i>
      *   = <i>azi2</i>, the geodesic is unique.  Otherwise there are two geodesics
-     *   and the second one is obtained by setting [<i>azi1</i>, <i>azi2</i>] =
+     *   and the Second one is obtained by setting [<i>azi1</i>, <i>azi2</i>] =
      *   [<i>azi2</i>, <i>azi1</i>], [<i>M12</i>, <i>M21</i>] = [<i>M21</i>,
      *   <i>M12</i>], <i>S12</i> = &minus;<i>S12</i>.  (This occurs when the
      *   longitude difference is near &plusmn;180&deg; for oblate ellipsoids.)
      * <li>
      *   <i>lon2</i> = <i>lon1</i> &plusmn; 180&deg; (with neither at a pole).  If
      *   <i>azi1</i> = 0&deg; or &plusmn;180&deg;, the geodesic is unique.
-     *   Otherwise there are two geodesics and the second one is obtained by
+     *   Otherwise there are two geodesics and the Second one is obtained by
      *   setting [ <i>azi1</i>, <i>azi2</i>] = [&minus;<i>azi1</i>,
      *   &minus;<i>azi2</i>], <i>S12</i> = &minus; <i>S12</i>.  (This occurs when
      *   the <i>lat2</i> is near &minus;<i>lat1</i> for prolate ellipsoids.)
@@ -460,7 +460,7 @@ namespace GeographicLib
          *   <i>outmask</i> |= GeodesicMask.GEODESICSCALE for the geodesic scales
          *   <i>M12</i> and <i>M21</i>;
          * <li>
-         *   <i>outmask</i> |= GeodesicMask.AREA for the area <i>S12</i>;
+         *   <i>outmask</i> |= GeodesicMask.AREA for the Area <i>S12</i>;
          * <li>
          *   <i>outmask</i> |= GeodesicMask.ALL for all of the above.
          * </ul>
@@ -541,7 +541,7 @@ namespace GeographicLib
          *   <i>outmask</i> |= GeodesicMask.GEODESICSCALE for the geodesic scales
          *   <i>M12</i> and <i>M21</i>;
          * <li>
-         *   <i>outmask</i> |= GeodesicMask.AREA for the area <i>S12</i>;
+         *   <i>outmask</i> |= GeodesicMask.AREA for the Area <i>S12</i>;
          * <li>
          *   <i>outmask</i> |= GeodesicMask.ALL for all of the above.
          * </ul>
@@ -602,7 +602,7 @@ namespace GeographicLib
             cbet1 = lat1 == -90 ? tiny_ : Math.Cos(phi);
             {
                 Pair p = SinCosNorm(sbet1, cbet1);
-                sbet1 = p.first; cbet1 = p.second;
+                sbet1 = p.First; cbet1 = p.Second;
             }
 
             phi = lat2 * GeoMath.Degree;
@@ -611,7 +611,7 @@ namespace GeographicLib
             cbet2 = Math.Abs(lat2) == 90 ? tiny_ : Math.Cos(phi);
             {
                 Pair p = SinCosNorm(sbet2, cbet2);
-                sbet2 = p.first; cbet2 = p.second;
+                sbet2 = p.First; cbet2 = p.Second;
             }
 
             // If cbet1 < -sbet1, then cbet3 - cbet1 is a sensitive measure of the
@@ -800,7 +800,7 @@ namespace GeographicLib
                                 salp1 = nsalp1;
                                 {
                                     Pair p = SinCosNorm(salp1, calp1);
-                                    salp1 = p.first; calp1 = p.second;
+                                    salp1 = p.First; calp1 = p.Second;
                                 }
                                 // In some regimes we don't get quadratic convergence because
                                 // slope -> 0.  So use convergence conditions based on Epsilon
@@ -821,7 +821,7 @@ namespace GeographicLib
                         calp1 = (calp1a + calp1b) / 2;
                         {
                             Pair p = SinCosNorm(salp1, calp1);
-                            salp1 = p.first; calp1 = p.second;
+                            salp1 = p.First; calp1 = p.Second;
                         }
                         tripn = false;
                         tripb = (Math.Abs(salp1a - salp1) + (calp1a - calp1) < tolb_ ||
@@ -870,11 +870,11 @@ namespace GeographicLib
                       A4 = GeoMath.Sq(_a) * calp0 * salp0 * _e2;
                     {
                         Pair p = SinCosNorm(ssig1, csig1);
-                        ssig1 = p.first; csig1 = p.second;
+                        ssig1 = p.First; csig1 = p.Second;
                     }
                     {
                         Pair p = SinCosNorm(ssig2, csig2);
-                        ssig2 = p.first; csig2 = p.second;
+                        ssig2 = p.First; csig2 = p.Second;
                     }
                     double[] C4a = new double[nC4_];
                     C4f(eps, C4a);
@@ -998,7 +998,7 @@ namespace GeographicLib
          *   <i>caps</i> |= GeodesicMask.GEODESICSCALE for the geodesic scales
          *   <i>M12</i> and <i>M21</i>;
          * <li>
-         *   <i>caps</i> |= GeodesicMask.AREA for the area <i>S12</i>;
+         *   <i>caps</i> |= GeodesicMask.AREA for the Area <i>S12</i>;
          * <li>
          *   <i>caps</i> |= GeodesicMask.DISTANCE_IN permits the length of the
          *   geodesic to be given in terms of <i>s12</i>; without this capability the
@@ -1029,7 +1029,7 @@ namespace GeographicLib
         public double Flattening() { return _f; }
 
         /**
-         * @return total area of ellipsoid in meters<sup>2</sup>.  The area of a
+         * @return total Area of ellipsoid in meters<sup>2</sup>.  The Area of a
          *   polygon encircling a pole can be found by adding EllipsoidArea()/2 to
          *   the sum of <i>S12</i> for each side of the polygon.
          **********************************************************************/
@@ -1256,7 +1256,7 @@ namespace GeographicLib
                   (comg12 >= 0 ? GeoMath.Sq(somg12) / (1 + comg12) : 1 - comg12);
                 {
                     Pair p = SinCosNorm(w.salp2, w.calp2);
-                    w.salp2 = p.first; w.calp2 = p.second;
+                    w.salp2 = p.First; w.calp2 = p.Second;
                 }
                 // Set return value
                 w.sig12 = Math.Atan2(ssig12, csig12);
@@ -1374,7 +1374,7 @@ namespace GeographicLib
             if (w.salp1 > 0)              // Sanity check on starting guess
             {
                 Pair p = SinCosNorm(w.salp1, w.calp1);
-                w.salp1 = p.first; w.calp1 = p.second;
+                w.salp1 = p.First; w.calp1 = p.Second;
             }
             else
             {
@@ -1423,7 +1423,7 @@ namespace GeographicLib
             w.csig1 = comg1 = calp1 * cbet1;
             {
                 Pair p = SinCosNorm(w.ssig1, w.csig1);
-                w.ssig1 = p.first; w.csig1 = p.second;
+                w.ssig1 = p.First; w.csig1 = p.Second;
             }
             // SinCosNorm(somg1, comg1); -- don't need to normalize!
 
@@ -1448,7 +1448,7 @@ namespace GeographicLib
             w.csig2 = comg2 = w.calp2 * cbet2;
             {
                 Pair p = SinCosNorm(w.ssig2, w.csig2);
-                w.ssig2 = p.first; w.csig2 = p.second;
+                w.ssig2 = p.First; w.csig2 = p.Second;
             }
             // SinCosNorm(somg3, comg3); -- don't need to normalize!
 

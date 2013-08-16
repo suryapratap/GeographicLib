@@ -7,29 +7,31 @@
  **********************************************************************/
 namespace GeographicLib
 {
-
-    /**
-     * A pair of double precision numbers.
-     * <p>
-     * This duplicates the C++ class {@code std::pair<double, double>}.
-     **********************************************************************/
+    /// <summary>
+    /// A pair of double precision numbers.
+    /// This duplicates the C++ class {@code std::pair<double, double>}.
+    /// </summary>
     public class Pair
     {
-        /**
-         * The first member of the pair.
-         **********************************************************************/
-        public double first;
-        /**
-         * The second member of the pair.
-         **********************************************************************/
-        public double second;
-        /**
-         * Constructor
-         * <p>
-         * @param first the first member of the pair.
-         * @param second the second member of the pair.
-         **********************************************************************/
-        public Pair(double first, double second)
-        { this.first = first; this.second = second; }
+        /// <summary>
+        /// The First member of the pair.
+        /// </summary>
+        public double First;
+
+        /// <summary>
+        /// The Second member of the pair.
+        /// </summary>
+        public double Second;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="First">First the First member of the pair.</param>
+        /// <param name="Second">Second the Second member of the pair.</param>
+        public Pair(double First, double Second)
+        {
+            this.First = First;
+            this.Second = Second;
+        }
     }
 }

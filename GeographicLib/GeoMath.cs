@@ -49,8 +49,8 @@ public class GeoMath {
    * The hypotenuse function avoiding underflow and overflow.  In Java version
    * 1.5 and later, Math.Hypot can be used.
    * <p>
-   * @param x the first argument.
-   * @param y the second argument.
+   * @param x the First argument.
+   * @param y the Second argument.
    * @return sqrt(<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup>).
    **********************************************************************/
   public static double Hypot(double x, double y) {
@@ -115,14 +115,14 @@ public class GeoMath {
   /**
    * The error-free sum of two numbers.
    * <p>
-   * @param u the first number in the sum.
-   * @param v the second number in the sum.
+   * @param u the First number in the sum.
+   * @param v the Second number in the sum.
    * @return Pair(<i>s</i>, <i>t</i>) with <i>s</i> = round(<i>u</i> +
    *   <i>v</i>) and <i>t</i> = <i>u</i> + <i>v</i> - <i>s</i>.
    * <p>
    * See D. E. Knuth, TAOCP, Vol 2, 4.2.2, Theorem B.
    **********************************************************************/
-  public static Pair Sum(double u, double v) {
+  public static Pair sum(double u, double v) {
     double s = u + v;
     double up = s - v;
     double vpp = s - up;
@@ -159,8 +159,8 @@ public class GeoMath {
   /**
    * Difference of two angles reduced to [&minus;180&deg;, 180&deg;]
    * <p>
-   * @param x the first angle in degrees.
-   * @param y the second angle in degrees.
+   * @param x the First angle in degrees.
+   * @param y the Second angle in degrees.
    * @return <i>y</i> &minus; <i>x</i>, reduced to the range [&minus;180&deg;,
    *   180&deg;].
    * <p>
@@ -172,7 +172,7 @@ public class GeoMath {
    **********************************************************************/
   public static double AngDiff(double x, double y) {
     double d, t;
-    { Pair r = Sum(-x, y); d = r.first; t = r.second; }
+    { Pair r = sum(-x, y); d = r.First; t = r.Second; }
     if ((d - 180.0) + t > 0.0) // y - x > 180
       d -= 360.0;            // exact
     else if ((d + 180.0) + t <= 0.0) // y - x <= -180

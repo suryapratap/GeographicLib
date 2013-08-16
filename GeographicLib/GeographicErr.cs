@@ -17,12 +17,12 @@ namespace GeographicLib
      **********************************************************************/
     public class GeographicErr : Exception
     {
-        /**
-         * Constructor
-         * <p>
-         * @param msg a string message, which is accessible in the catch
-         *   clause via getMessage().
-         **********************************************************************/
-        public GeographicErr(String msg) : base(msg) { }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="msg">msg a string message, which is accessible in the catch clause via getMessage(). </param>
+        public GeographicErr(String msg)
+            : base(msg) 
+        { }
     }
 }
