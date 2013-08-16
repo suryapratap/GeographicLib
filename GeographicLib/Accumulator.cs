@@ -8,74 +8,95 @@
 namespace GeographicLib
 {
 
-    /**
-     * An accumulator for sums.
-     * <p>
-     * This allow many double precision numbers to be added together with twice the
-     * normal precision.  Thus the effective precision of the sum is 106 bits or
-     * about 32 decimal places.
-     * <p>
-     * The implementation follows J. R. Shewchuk,
-     * <a href="http://dx.doi.org/10.1007/PL00009321"> Adaptive Precision
-     * Floating-Point Arithmetic and Fast Robust Geometric Predicates</a>,
-     * Discrete & Computational Geometry 18(3) 305&ndash;363 (1997).
-     * <p>
-     * In the documentation of the member functions, <i>sum</i> stands for the value
-     * currently held in the accumulator.
-     ***********************************************************************/
+    /// <summary>
+    /// An accumulator for sums. 
+    /// This allow many double precision numbers to be added together with twice the
+    /// normal precision.  Thus the effective precision of the sum is 106 bits or
+    /// about 32 decimal places.
+    /// The implementation follows J. R. Shewchuk,
+    /// <a href="http://dx.doi.org/10.1007/PL00009321"> Adaptive Precision
+    /// Floating-Point Arithmetic and Fast Robust Geometric Predicates</a>,
+    /// Discrete & Computational Geometry 18(3) 305&ndash;363 (1997).
+    /// In the documentation of the member functions, <i>sum</i> stands for the value
+    /// currently held in the accumulator.
+    /// </summary>
     public class Accumulator
     {
-        // _s + _t accumulators for the sum.
+        /// <summary>
+        /// _s + _t accumulators for the sum.
+        /// </summary>
         private double _s, _t;
-        /**
-         * Construct from a double.
-         * <p>
-         * @param y set <i>sum</i> = <i>y</i>.
-         **********************************************************************/
-        public Accumulator(double y) { _s = y; _t = 0; }
-        /**
-         * Construct from another Accumulator.
-         * <p>
-         * @param a set <i>sum</i> = <i>a</i>.
-         **********************************************************************/
-        public Accumulator(Accumulator a) { _s = a._s; _t = a._t; }
-        /**
-         * Set the value to a double.
-         * <p>
-         * @param y set <i>sum</i> = <i>y</i>.
-         **********************************************************************/
-        public void Set(double y) { _s = y; _t = 0; }
-        /**
-         * Return the value held in the accumulator.
-         * <p>
-         * @return <i>sum</i>.
-         **********************************************************************/
-        public double Sum() { return _s; }
-        /**
-         * Return the result of adding a number to <i>sum</i> (but don't change
-         * <i>sum</i>).
-         * <p>
-         * @param y the number to be added to the sum.
-         * @return <i>sum</i> + <i>y</i>.
-         **********************************************************************/
+
+        /// <summary>
+        ///  Construct from a double.
+        /// </summary>
+        /// <param name="y">set <i>sum</i> = <i>y</i>.</param>
+        public Accumulator(double y)
+        {
+            _s = y;
+            _t = 0;
+        }
+
+        /// <summary>
+        /// Construct from another Accumulator.
+        /// </summary>
+        /// <param name="a">set <i>sum</i> = <i>a</i>.</param>
+        public Accumulator(Accumulator a)
+        {
+            _s = a._s;
+            _t = a._t;
+        }
+
+        /// <summary>
+        /// Set the value to a double.
+        /// </summary>
+        /// <param name="y">set <i>sum</i> = <i>y</i>.</param>
+        public void Set(double y)
+        {
+            _s = y;
+            _t = 0;
+        }
+
+        /// <summary>
+        ///  Return the value
+        /// </summary>
+        /// <returns><i>sum</i>.</returns>
+        public double Sum()
+        {
+            return _s;
+        }
+
+        /// <summary>
+        /// Return the result of adding a number to <i>sum</i> (but don't change <i>sum</i>).
+        /// </summary>
+        /// <param name="y">the number to be added to the sum.</param>
+        /// <returns><i>sum</i> + <i>y</i>.</returns>
         public double Sum(double y)
         {
             Accumulator a = new Accumulator(this);
             a.Add(y);
             return a._s;
         }
-        /**
-         * Add a number to the accumulator.
-         * <p>
-         * @param y set <i>sum</i> += <i>y</i>.
-         **********************************************************************/
+
+        /// <summary>
+        /// Add a number to the accumulator.
+        /// </summary>
+        /// <param name="y">Set <i>sum</i> += <i>y</i>.</param>
         public void Add(double y)
         {
             // Here's Shewchuk's solution...
             double u;                       // hold exact sum as [s, t, u]
             // Accumulate starting at least significant end
-            { Pair r = GeoMath.sum(y, _t); y = r.First; u = r.Second; }
-            { Pair r = GeoMath.sum(y, _s); _s = r.First; _t = r.Second; }
+            {
+                Pair r = GeoMath.sum(y, _t);
+                y = r.First;
+                u = r.Second;
+            }
+            {
+                Pair r = GeoMath.sum(y, _s);
+                _s = r.First;
+                _t = r.Second;
+            }
             // Start is _s, _t decreasing and non-adjacent.  Sum is now (s + t + u)
             // exactly with s, t, u non-adjacent and in decreasing order (except for
             // possible zeros).  The following code tries to normalize the result.
@@ -108,11 +129,19 @@ namespace GeographicLib
             else
                 _t += u;                // otherwise just accumulate u to t.
         }
-        /**
-         * Negate an accumulator.
-         * <p>
-         * Set <i>sum</i> = &minus;<i>sum</i>.
-         **********************************************************************/
-        public void Negate() { _s = -_s; _t = -_t; }
+
+
+
+
+        /// <summary>
+        /// Negate an accumulator.
+        /// <p>
+        /// Set <i>sum</i> = &minus;<i>sum</i>.
+        /// </summary>
+        public void Negate()
+        {
+            _s = -_s;
+            _t = -_t;
+        }
     }
 }

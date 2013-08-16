@@ -261,8 +261,7 @@ namespace GeographicLib
          * <i>lat</i> should be in the range [&minus;90&deg;, 90&deg;] and <i>lon</i>
          * should be in the range [&minus;540&deg;, 540&deg;).
          **********************************************************************/
-        public PolygonResult TestPoint(double lat, double lon,
-                                       bool reverse, bool sign)
+        public PolygonResult TestPoint(double lat, double lon, bool reverse, bool sign)
         {
             if (_num == 0)
                 return new PolygonResult(1, 0, _polyline ? Double.NaN : 0);
@@ -336,8 +335,7 @@ namespace GeographicLib
          * <p>
          * <i>azi</i> should be in the range [&minus;540&deg;, 540&deg;).
          **********************************************************************/
-        public PolygonResult TestEdge(double azi, double s,
-                                      bool reverse, bool sign)
+        public PolygonResult TestEdge(double azi, double s, bool reverse, bool sign)
         {
             if (_num == 0)              // we don't have a starting point!
                 return new PolygonResult(0, Double.NaN, Double.NaN);
