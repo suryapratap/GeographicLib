@@ -1,3 +1,9 @@
+Update
+=================
+This repo was created before [NETGeographicLib](https://geographiclib.sourceforge.io/html/NET/) was available. 
+Please use NETGeographicLib as it is officially supported.
+This repo will be archived and no further maintenance will be done on this for the foreseeable future
+
 GeographicLib (C#)
 ==================
 This is an attempt to port the Java version of GeographicLib to C#.
